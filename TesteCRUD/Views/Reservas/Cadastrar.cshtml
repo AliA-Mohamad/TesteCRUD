@@ -1,0 +1,13 @@
+﻿@model ReservasModel
+
+<form method="post" asp-controller="Reservas" asp-action="Cadastrar">
+    <div class="ab-3">
+        <label for="nome" class="form-label">Nome:</label>
+        <input type="text" id="nome" asp-for="Name" placeholder="Digite um nome...">
+    </div>
+    <div class="ab-3">
+        <label for="quarto" class="form-label">Quarto:</label>
+        <input type="text" id="quarto" asp-for="Quarto" placeholder="Digite o quarto...">
+    </div>
+    <button type="submit" class="btn btn-primary">Reservar</button>
+</form>

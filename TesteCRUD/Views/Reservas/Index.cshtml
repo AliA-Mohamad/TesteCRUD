@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ReservasModel>
+
+<a class="btn btn-success" asp-controller="Reservas" asp-action="Cadastrar">Adicionar</a>
+<table class="table table-dark table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Quarto</th>
+            <th scope="col">Data Entrada</th>
+            <th scope="col">Data Saida</th>
+            <th scope="col">Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var reserva in Model)
+            {
+                <tr>
+                    <th scope="row">@reserva.Id</th>
+                    <td>@reserva.Name</td>
+                    <td>@reserva.Quarto</td>
+                    <td>@reserva.DataEntrada</td>
+                    <td>
+                        @if (reserva.DataSaida != DateTime.MinValue)
+                        {
+                            @reserva.DataSaida
+                        }
+                    </td>
+                    <td>
+                        @if (reserva.DataSaida == DateTime.MinValue)
+                        {
+                            <a class="btn btn-warning" asp-controller="Reservas" asp-action="Finalizar" asp-route-id="@reserva.Id">Finalizar</a>
+                        }
+                        <a class="btn btn-danger" asp-controller="Reservas" asp-action="Deletar" asp-route-id="@reserva.Id">Excluir</a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
